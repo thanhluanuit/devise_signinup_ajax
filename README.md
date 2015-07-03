@@ -1,4 +1,4 @@
-##Sign In/Up Users With Ajax Using Devise - Sign In/Up by Connect to Facebook
+##Sign In/Up Users With Ajax Using Devise - Connect to Facebook
 
 ####This application requires:
 
@@ -51,8 +51,10 @@
     ```ruby
     devise_for :users, :controllers => {registrations: 'registrations', sessions: 'sessions'}
     ```
-
-  6.Add javaScripts when submit by ajax
+  
+  
+  6. Add javaScripts when submit by ajax 
+  
     
     app/assets/javascripts/devise.js  
     ```javascript
@@ -68,13 +70,13 @@
       });
     }
     ```
-    
-  7.Validate form in client:
+  
+  7. Validate form in client:
     
     + app/assets/javascripts/validates.js  
     + app/assets/javascripts/custom_validates.js  
     + app/assets/javascripts/devise.js => SignInUp.validator();  
-
+  
   8. Connect to Facebook, get info and sign in/up
     
     app/assets/javascripts/connect_facebook.js
