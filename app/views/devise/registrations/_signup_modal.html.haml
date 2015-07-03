@@ -1,0 +1,34 @@
+#signup_modal.modal.fade{:role => "dialog", :tabindex => "-1"}
+  .modal-dialog.modal-sm{:role => "document"}
+    .modal-content
+      .modal-header
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×        
+      .modal-body
+        .auth_form
+          .facebook
+            %a.btn.btn-primary{:onclick => "connectToFacebook();"}
+              = t('devise.registrations.facebook')
+          .errors
+            %ul
+          = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :role => 'form', id: 'sign_up_user'}, format: :json, remote: true) do |f|
+            .form-group
+              = f.text_field :firstname, :autofocus => true, class: 'form-control', :placeholder => "#{t("user_edit.tab.edit_profile.form.firstname")}"
+              .show-error
+            .form-group
+              = f.text_field :lastname, class: 'form-control', :placeholder => "#{t("user_edit.tab.edit_profile.form.lastname")}"
+              .show-error
+            .form-group
+              = f.text_field :username, class: 'form-control', :placeholder => "#{t("user_edit.tab.edit_profile.form.username")}"
+              .show-error
+            .form-group
+              = f.email_field :email, class: 'form-control', :placeholder => "#{t("user_edit.tab.edit_profile.form.email")}"
+              .show-error
+            .form-group
+              = f.password_field :password, class: 'form-control', :placeholder => "#{t("active_admin.devise.password.title")}"
+              .show-error
+            .form-group
+              = f.password_field :password_confirmation, class: 'form-control', :placeholder => "#{t("active_admin.devise.password.confirmation")}"
+              .show-error            
+            = f.submit 'Sign up', :class => 'btn btn-danger'
+            

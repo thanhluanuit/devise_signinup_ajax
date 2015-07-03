@@ -1,0 +1,35 @@
+#signin_modal.modal.fade{:role => "dialog", :tabindex => "-1"}
+  .modal-dialog.modal-sm{:role => "document"}
+    .modal-content
+      .modal-header
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×        
+      .modal-body
+        .auth_form
+          .facebook
+            %a.btn.btn-primary{:onclick => "connectToFacebook();"}
+              = t('devise.registrations.facebook')          
+          .errors
+            %ul          
+          = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form', id: 'sign_in_user'}, format: :json, remote: true) do |f|
+            .form-group
+              = f.email_field :email, :autofocus => true, class: 'form-control', :placeholder => "#{t("user_edit.tab.edit_profile.form.email")}"
+              .show-error
+            .form-group
+              = f.password_field :password, class: 'form-control', :placeholder => "#{t("active_admin.devise.password.title")}"
+              .show-error
+
+            = f.submit "#{t("active_admin.devise.links.sign_in")}", :class => 'btn btn-danger'
+            
+            - if devise_mapping.rememberable?
+              .form-group
+                .checkbox
+                  %label
+                    = f.check_box :remember_me
+                    = t("active_admin.devise.login.remember_me")
+            .form-group
+              - if devise_mapping.recoverable?
+                = link_to "Forgot password?", new_password_path(resource_name), class: 'right'
+              - if devise_mapping.registerable?              
+                %a.rightF{"data-target" => "#signup_modal", "data-toggle" => "modal", :type => "button"}
+                  = t("active_admin.devise.sign_up.title")

@@ -1,0 +1,11 @@
+.navbar.navbar-fixed-top{:role => "navigation"}
+  .navbar1
+    .container
+      .navbar-header        
+      .collapse.navbar-collapse
+        %ul.nav.navbar-nav.navbar-right          
+          - if current_user.blank?
+            %li
+              %a{"data-target" => "#signin_modal", "data-toggle" => "modal"} Sign in
+            %li
+              %a{"data-target" => "#signup_modal", "data-toggle" => "modal"} Sign up

@@ -1,0 +1,59 @@
+#signup_modal, #signin_modal{
+  .modal-sm{
+    width: 340px;
+  }
+
+  .modal-header{
+    border-bottom: none;
+    .close{
+      margin-top: -10px;
+    }
+  } 
+
+  .facebook{
+    text-align: center;
+    padding: 0 24px;
+    .btn{
+      width: 100%;
+    }
+  }
+  .auth_form form{    
+    padding: 10px 24px 0;
+    border-radius: 6px;
+    
+    input[type="submit"]{
+      width: 100%;
+      padding: 6px 0;
+      color: white;
+      font-size: 15px;
+      border-color: #FF1634;
+      background-color: #FF1634;
+    }
+  }
+
+  .terms{
+    font-size: 13px;
+    text-align: justify;
+  }
+  .offers{
+    text-align: justify;
+  }
+
+  .show-error{    
+    label {
+      color: red;
+    }
+  }
+
+  .errors{
+    padding-top: 10px;
+    margin-bottom: -10px;
+    ul { 
+      color: red; 
+    }
+  }
+
+  .rightF{
+    float: right;
+  }
+}
