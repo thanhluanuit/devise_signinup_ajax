@@ -9,17 +9,22 @@
 
 ####Usage
 
-  1. Configure Devise To Accept JSON 
-    # config/initializers/devise.rb
-    config.http_authenticatable_on_xhr = false
+  1. Configure Devise To Accept JSON
+    
+    config/initializers/devise.rb:  
+    ```ruby
+    config.http_authenticatable_on_xhr = false  
     config.navigational_formats = ['*/*', :html, :json]
-
+    ```
   2. Create Session Controller and Register Controller
-    # app/controllers/sessions_controller.rb
-    # app/controllers/registrations_controller.rb 
+    
+    + app/controllers/sessions_controller.rb  
+    + app/controllers/registrations_controller.rb 
 
   3. Add Devise Mappings To Your Application Helper
-    # app/helpers/application_helper.rb
+    
+    app/helpers/application_helper.rb
+    ```ruby
     module ApplicationHelper
       def resource
         @resource ||= User.new
@@ -33,17 +38,24 @@
         @devise_mapping ||= Devise.mappings[:user]
       end
     end
-
+    ```
+    
   4. Add sign in and sign up form to 2 modal (signin_modal & signup_modal)
-    # app/views/devise/registrations/_signin_modal.html.haml
-    # app/views/devise/registrations/_signup_modal.html.haml
+    
+    + app/views/devise/registrations/_signin_modal.html.haml  
+    + app/views/devise/registrations/_signup_modal.html.haml  
 
   5. Config Routes
-    # config/routes.rb
+    
+    config/routes.rb  
+    ```ruby
     devise_for :users, :controllers => {registrations: 'registrations', sessions: 'sessions'}
+    ```
 
   6.Add javaScripts when submit by ajax
-    # app/assets/javascripts/devise.js
+    
+    app/assets/javascripts/devise.js  
+    ```javascript
     callbackSubmit: function(modal){
       var self = this;
 
@@ -55,11 +67,14 @@
         }
       });
     }
-
+    ```
+    
   7.Validate form in client:
-    # app/assets/javascripts/validates.js
-    # app/assets/javascripts/custom_validates.js
-    # app/assets/javascripts/devise.js => SignInUp.validator();
+    
+    + app/assets/javascripts/validates.js  
+    + app/assets/javascripts/custom_validates.js  
+    + app/assets/javascripts/devise.js => SignInUp.validator();  
 
   8. Connect to Facebook, get info and sign in/up
-    #app/assets/javascripts/connect_facebook.js
+    
+    app/assets/javascripts/connect_facebook.js
